@@ -1,0 +1,310 @@
+/* =========================================================
+   1. VARIÁVEIS CSS E RESET (ORIGINAL)
+   ========================================================= */
+:root {
+  --bg-color: #121212;
+  --bg-section-alt: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --hover-color: #e0e0e0;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --transparencia-bg: rgba(255, 255, 255, 0.15);
+  --transparencia-border: rgba(255, 255, 255, 0.1);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--bg-color);
+  font-family: var(--font-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   2. MENU DE NAVEGAÇÃO (ORIGINAL)
+   ========================================================= */
+header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--transparencia-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--transparencia-border);
+  border-radius: 50px;
+  padding: 8px 8px 8px 30px;
+  gap: 40px;
+  position: fixed;
+  top: 30px;
+  z-index: 1000;
+  max-width: 900px;
+  width: 90%;
+}
+.logo a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+.nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+.nav-links a:hover {
+  opacity: 1;
+  color: #88ccff;
+}
+.cta-button {
+  background-color: var(--text-primary);
+  color: #000000;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+  background-color: var(--hover-color);
+}
+
+/* =========================================================
+   3. SEÇÃO HERO
+   ========================================================= */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  box-shadow: 5px 1px 20px #fff;
+  scroll-snap-align: start; 
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  min-width: 100%;
+  transform: translate(-50%, -50%) scale(1.5);
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Animação de entrada do texto no Hero */
+@keyframes fadeInHero {
+  0% { opacity: 0; transform: translate(-50%, -40%); }
+  100% { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Tem q tirar a animacao e colocar de volta no hero toda vez que clica no menu e volta */
+.hero-overlay {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+  width: 60%;
+  max-width: 600px;
+  color: #ffffff; 
+  animation: fadeInHero 1.5s ease-out forwards;
+}
+
+.hero-overlay h1 {
+  margin-bottom: 20px;
+}
+
+.hero-overlay p {
+  margin-bottom: 10px;
+}
+
+.hero-overlay .cta-button {
+  display: inline-block;
+  margin-top: 30px; 
+}
+
+/* =========================================================
+   4. ESTRUTURA DAS SEÇÕES 
+   ========================================================= */
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.secao-conteudo {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; 
+  width: 100%; 
+  min-height: 100vh;
+  padding: 120px 20px;
+  gap: 60px;
+  scroll-snap-align: start; 
+}
+.secao-conteudo.invertido {
+  flex-direction: row-reverse;
+  background-color: var(--bg-section-alt);
+}
+
+.secao-conteudo.cards {
+  flex-direction: column;
+  gap: 80px;
+  background-color: var(--bg-section-alt);
+}
+.divCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.texto, .imagem {
+  max-width: 500px;
+  width: 100%;
+}
+.texto h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #88ccff; 
+}
+.texto p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+.imagem img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid var(--transparencia-border);
+  animation: float 5s ease-in-out infinite; 
+}
+
+
+/* =========================================================
+   5. "ANIMAÇÃO" DO CARD 
+   ========================================================= */
+/* Background escuro quando hover */
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.15));
+    opacity: 0;
+    transition: 0.4s ease;
+}
+/* Quando o hover for ativado aparece o texto  */
+.content{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:30px;
+    color:white;
+    transform:translateY(80px);
+    opacity:0;
+    transition: 0.4s ease;
+}
+.content span{
+    color:#c7c7c7;
+    font-size:14px;
+    display:block;
+    margin-bottom:20px;
+}
+.content p{
+    color:#e2e2e2;
+}
+
+
+/* =========================================================
+   6. CARD 
+   ========================================================= */
+.card{
+    position:relative;
+    width:320px;
+    height:320px;
+    border-radius:20px;
+    overflow:hidden;
+    cursor:pointer;
+    background:#000;
+}
+.card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s ease;
+}
+.card:hover .overlay{
+    opacity: 1;
+}
+.card:hover .content{
+    transform:translateY(0);
+    opacity: 1;
+}
+.card:hover img{
+    transform:scale(1.05);
+}
+/* CLIQUE DO USUARIO - JS */
+.card.active .overlay{
+    opacity: 1;
+}
+.card.active .content{
+    transform:translateY(0);
+    opacity: 1;
+}
+.card.active img{
+    transform:scale(1.05);
+}
+
+
+/* =========================================================
+   7. Fotter
+   ========================================================= */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #0a0a0a;
+  border-top: 1px solid var(--transparencia-border);
+  scroll-snap-align: end; /* Permite rolar até o rodapé */
+}
+
+footer p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
